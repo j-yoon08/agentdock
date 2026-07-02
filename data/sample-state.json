@@ -1,0 +1,187 @@
+{
+  "generated_at": "2026-07-02T21:43:00+09:00",
+  "workspace": {
+    "name": "Jongyun Ops",
+    "mode": "read_only_mvp",
+    "owner": "Jongyun"
+  },
+  "agents": [
+    {
+      "id": "blog-scout",
+      "name": "Blog Scout",
+      "domain": "Content",
+      "status": "healthy",
+      "risk": "low",
+      "last_run": "2026-07-02T06:00:00+09:00",
+      "next_run": "2026-07-03T06:00:00+09:00",
+      "success_rate": 0.96,
+      "last_output": "ActualStack 후보 7건 수집",
+      "cost_usd_24h": 0.18
+    },
+    {
+      "id": "calendar-watch",
+      "name": "Calendar Watch",
+      "domain": "Personal Ops",
+      "status": "healthy",
+      "risk": "low",
+      "last_run": "2026-07-02T20:45:00+09:00",
+      "next_run": "2026-07-02T22:00:00+09:00",
+      "success_rate": 0.99,
+      "last_output": "오늘 일정 3건 동기화",
+      "cost_usd_24h": 0.02
+    },
+    {
+      "id": "github-maintainer",
+      "name": "GitHub Maintainer",
+      "domain": "Development",
+      "status": "needs_approval",
+      "risk": "medium",
+      "last_run": "2026-07-02T19:14:00+09:00",
+      "next_run": null,
+      "success_rate": 0.88,
+      "last_output": "README 개선 PR 생성 대기",
+      "cost_usd_24h": 0.11
+    },
+    {
+      "id": "security-lab-watch",
+      "name": "Security Lab Watch",
+      "domain": "Security",
+      "status": "warning",
+      "risk": "high",
+      "last_run": "2026-07-02T18:30:00+09:00",
+      "next_run": "2026-07-02T22:30:00+09:00",
+      "success_rate": 0.81,
+      "last_output": "Loki ingest latency 상승",
+      "cost_usd_24h": 0.05
+    },
+    {
+      "id": "investment-guard",
+      "name": "Investment Guard",
+      "domain": "Finance",
+      "status": "blocked",
+      "risk": "critical",
+      "last_run": "2026-07-02T09:15:00+09:00",
+      "next_run": null,
+      "success_rate": 0.74,
+      "last_output": "사전 승인 없는 주문 차단",
+      "cost_usd_24h": 0.03
+    }
+  ],
+  "approvals": [
+    {
+      "id": "apv-101",
+      "title": "GitHub README 개선 PR 열기",
+      "agent_id": "github-maintainer",
+      "risk": "medium",
+      "action_type": "external_write",
+      "requested_at": "2026-07-02T19:14:00+09:00",
+      "status": "pending",
+      "summary": "lp-crate README에 설치/로드맵/라이선스 섹션을 추가하는 PR 초안",
+      "allowed_decisions": ["approve", "reject", "edit"]
+    },
+    {
+      "id": "apv-102",
+      "title": "ActualStack 게시 후보 1건 예약",
+      "agent_id": "blog-scout",
+      "risk": "medium",
+      "action_type": "publish_schedule",
+      "requested_at": "2026-07-02T06:12:00+09:00",
+      "status": "pending",
+      "summary": "AI 개발자 도구 트렌드 요약 글 예약 게시",
+      "allowed_decisions": ["approve", "reject", "snooze"]
+    },
+    {
+      "id": "apv-103",
+      "title": "투자 자동화 주문 차단 확인",
+      "agent_id": "investment-guard",
+      "risk": "critical",
+      "action_type": "financial_trade",
+      "requested_at": "2026-07-02T09:15:00+09:00",
+      "status": "blocked",
+      "summary": "정확 승인문구가 없어 live 주문은 실행하지 않음",
+      "allowed_decisions": ["acknowledge"]
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-201",
+      "time": "2026-07-02T21:00:00+09:00",
+      "severity": "info",
+      "source": "calendar-watch",
+      "message": "다음 24시간 일정 브리핑 갱신"
+    },
+    {
+      "id": "evt-202",
+      "time": "2026-07-02T19:14:00+09:00",
+      "severity": "attention",
+      "source": "github-maintainer",
+      "message": "외부 write 승인 대기"
+    },
+    {
+      "id": "evt-203",
+      "time": "2026-07-02T18:30:00+09:00",
+      "severity": "warning",
+      "source": "security-lab-watch",
+      "message": "Loki ingest latency 6분 초과"
+    },
+    {
+      "id": "evt-204",
+      "time": "2026-07-02T09:15:00+09:00",
+      "severity": "critical",
+      "source": "investment-guard",
+      "message": "financial_trade 액션 fail-closed"
+    }
+  ],
+  "failures": [
+    {
+      "id": "fail-301",
+      "agent_id": "security-lab-watch",
+      "title": "Loki ingest latency 상승",
+      "severity": "warning",
+      "first_seen": "2026-07-02T18:30:00+09:00",
+      "probable_cause": "수집 로그 burst 또는 인덱스 flush 지연",
+      "suggested_fix": "최근 1시간 ingest rate와 promtail queue 확인",
+      "retryable": true
+    },
+    {
+      "id": "fail-302",
+      "agent_id": "investment-guard",
+      "title": "승인 없는 live 주문 요청 차단",
+      "severity": "critical",
+      "first_seen": "2026-07-02T09:15:00+09:00",
+      "probable_cause": "정확 승인문구 누락",
+      "suggested_fix": "주문안 fingerprint와 승인문구를 별도 확인 후 재요청",
+      "retryable": false
+    }
+  ],
+  "connectors": [
+    {
+      "id": "cron",
+      "name": "Hermes Cron",
+      "status": "connected",
+      "mode": "read_only",
+      "last_seen": "2026-07-02T21:00:00+09:00"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "status": "connected",
+      "mode": "read_only",
+      "last_seen": "2026-07-02T20:50:00+09:00"
+    },
+    {
+      "id": "calendar",
+      "name": "Google Calendar",
+      "status": "connected",
+      "mode": "read_only",
+      "last_seen": "2026-07-02T20:45:00+09:00"
+    },
+    {
+      "id": "loki",
+      "name": "Security Lab Loki",
+      "status": "degraded",
+      "mode": "read_only",
+      "last_seen": "2026-07-02T18:30:00+09:00"
+    }
+  ]
+}

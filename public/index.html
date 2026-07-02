@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AgentDock · AI Agent Control Plane</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="rail" aria-label="AgentDock navigation">
+        <div class="brand-mark" aria-hidden="true">AD</div>
+        <nav>
+          <a href="#today" class="active">Today</a>
+          <a href="#agents">Agents</a>
+          <a href="#approvals">Approvals</a>
+          <a href="#failures">Failures</a>
+        </nav>
+      </aside>
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Self-hosted AI agent control plane</p>
+            <h1>AgentDock</h1>
+            <p class="subtitle">AI 에이전트, 자동화, 승인 대기, 실패 원인을 한 화면에서 관제하는 read-only MVP.</p>
+          </div>
+          <div class="mode-pill" id="mode-pill">read-only</div>
+        </header>
+
+        <section class="hero-grid" aria-label="AgentDock summary">
+          <article class="status-card primary">
+            <span class="label">Overall</span>
+            <strong id="overall-health">Loading</strong>
+            <p id="overall-detail">상태를 불러오는 중입니다.</p>
+          </article>
+          <article class="status-card"><span class="label">Active agents</span><strong id="agents-active">-</strong><p>현재 관제 대상</p></article>
+          <article class="status-card"><span class="label">Pending approvals</span><strong id="pending-approvals">-</strong><p>외부 write / publish / high-risk</p></article>
+          <article class="status-card"><span class="label">Open failures</span><strong id="open-failures">-</strong><p>원인 확인 필요</p></article>
+          <article class="status-card"><span class="label">24h cost</span><strong id="cost-24h">-</strong><p>agent runtime estimate</p></article>
+        </section>
+
+        <section id="today" class="panel wide">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Today cockpit</p>
+              <h2>오늘 봐야 할 것</h2>
+            </div>
+            <span class="muted" id="generated-at">-</span>
+          </div>
+          <div class="stack-list" id="today-list"></div>
+        </section>
+
+        <section class="content-grid">
+          <article id="agents" class="panel">
+            <div class="panel-head"><h2>Agent Registry</h2><span class="muted" id="agent-count">-</span></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Agent</th><th>Status</th><th>Risk</th><th>Last output</th></tr></thead>
+                <tbody id="agent-table"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article id="approvals" class="panel">
+            <div class="panel-head"><h2>Pending Approval</h2><span class="muted">read-only preview</span></div>
+            <div class="stack-list" id="approval-list"></div>
+          </article>
+
+          <article id="failures" class="panel">
+            <div class="panel-head"><h2>Failure Triage</h2><span class="muted">probable cause</span></div>
+            <div class="stack-list" id="failure-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><h2>Connectors</h2><span class="muted">read-only</span></div>
+            <div class="connector-grid" id="connector-grid"></div>
+          </article>
+        </section>
+
+        <section class="panel wide">
+          <div class="panel-head"><h2>Activity Timeline</h2><span class="muted">recent events</span></div>
+          <div class="timeline" id="event-timeline"></div>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
