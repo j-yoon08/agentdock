@@ -95,4 +95,10 @@ td { color: var(--text); }
   .hero-grid { grid-template-columns: 1fr; }
   .connector-grid { grid-template-columns: 1fr; }
   .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+  .table-wrap { overflow-x: visible; }
+  table, thead, tbody, tr, th, td { display: block; width: 100%; min-width: 0; }
+  thead { display: none; }
+  table { border-collapse: separate; }
+  tr { border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; background: #0d1118; margin-bottom: 10px; }
+  td { border-bottom: 0; padding: 4px 0; }
 }

@@ -1,14 +1,16 @@
 {
   "name": "agentdock",
   "version": "0.1.0",
-  "description": "Self-hosted AI agent and automation control plane MVP.",
+  "description": "Self-hosted control plane for AI agents, automations, approvals, and failure triage.",
   "type": "module",
-  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "node src/server.js",
     "check": "node --check src/control-plane.js && node --check src/server.js && node --check public/app.js",
     "test": "node --test"
   },
   "keywords": ["ai-agent", "automation", "dashboard", "control-plane", "approval-queue"],
-  "license": "UNLICENSED"
+  "license": "MIT"
 }
