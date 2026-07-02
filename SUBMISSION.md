@@ -26,9 +26,8 @@ This repository is prepared for an open-source / MVP-style submission.
 
 ## Pending before external submission
 
-1. Create/push a public GitHub repository, for example `j-yoon08/agentdock`.
-2. Replace the repository URL placeholder in the application draft with the real URL.
-3. Fill in OpenAI Organization ID manually from the official OpenAI dashboard.
-4. Submit only through the official OpenAI form/domain if applying for Codex/OSS support.
+1. Verify the public GitHub repository is reachable: `https://github.com/j-yoon08/agentdock`.
+2. Fill in OpenAI Organization ID manually from the official OpenAI dashboard.
+3. Submit only through the official OpenAI form/domain if applying for Codex/OSS support.
 
 Do not paste API keys, tokens, or private server credentials into any submission form.

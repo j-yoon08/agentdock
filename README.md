@@ -46,7 +46,7 @@ Requirements:
 - Node.js 22+
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/j-yoon08/agentdock.git
 cd agentdock
 npm run check
 npm test

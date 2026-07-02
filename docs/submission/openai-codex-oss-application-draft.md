@@ -10,7 +10,7 @@
 
 **Repository URL**
 
-`〈replace after public push: https://github.com/j-yoon08/agentdock〉`
+`https://github.com/j-yoon08/agentdock`
 
 **Project name**
 
