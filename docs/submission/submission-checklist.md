@@ -14,7 +14,7 @@
 
 ## External submission pending items
 
-- [ ] Public GitHub repository created/pushed.
+- [x] Public GitHub repository created/pushed: `https://github.com/j-yoon08/agentdock`.
 - [x] Real repository URL filled in application draft.
 - [ ] OpenAI Organization ID filled manually by Jongyun.
 - [ ] Official OpenAI form opened directly by user.

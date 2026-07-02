@@ -17,6 +17,7 @@ This repository is prepared for an open-source / MVP-style submission.
 ## Current readiness
 
 - Local MVP implemented.
+- Public GitHub repository published: `https://github.com/j-yoon08/agentdock`.
 - Tests pass.
 - API smoke passes.
 - Screenshot artifacts generated.
